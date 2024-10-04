@@ -3,11 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:ModbusSimulation"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Loaded="Window_Loaded">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition>
+            </ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <lvc:Gauge Grid.Row="0" Grid.Column="0" Margin="10,10,533,10" From="10" To="100" Value="0" GaugeActiveFill="Green" x:Name ="gauage1"></lvc:Gauge>
+        <lvc:Gauge Grid.Row="0" Margin="426,10,10,10" From="10" To="100" Value="0" GaugeActiveFill="Green" x:Name ="gauage2"/>
+
     </Grid>
 </Window>

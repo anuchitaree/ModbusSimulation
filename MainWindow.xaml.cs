@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
+using System.Windows.Threading;
 
 namespace ModbusSimulation
 {
@@ -20,9 +23,26 @@ namespace ModbusSimulation
     /// </summary>
     public partial class MainWindow : Window
     {
+       DispatcherTimer timerPoll = new DispatcherTimer();
+        int g1 = 0;
         public MainWindow()
         {
             InitializeComponent();
+           
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            timerPoll.Interval = TimeSpan.FromSeconds(1);
+            timerPoll.Tick += TimePoll_Tick;
+            timerPoll.Start();  
+        }
+
+        private void TimePoll_Tick(object sender, EventArgs e)
+        {
+            g1++;
+            gauage1.Value = g1;
+            gauage2.Value = g1;
         }
     }
 }
